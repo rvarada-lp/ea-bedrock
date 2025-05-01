@@ -2,7 +2,14 @@ name: validate-pr
 
 on:
   pull_request:
-    types: [opened, edited, synchronize, reopened]
+    branches:
+      - BRInt
+      - BRStaging
+      - main
+    types:
+      - opened
+      - reopened
+      - synchronize
 
 jobs:
   validate-title:  # This matches 'validate-title'
