@@ -19,3 +19,4 @@ jobs:
             echo "::error title=Invalid PR Title::PR title must contain the word 'Feature'"
             exit 1
           fi
+ 
