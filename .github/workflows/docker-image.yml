@@ -8,8 +8,6 @@ on:
       - main
     types:
       - opened
-      - reopened
-      - synchronize
 
 jobs:
   validate-title:  # This matches 'validate-title'
