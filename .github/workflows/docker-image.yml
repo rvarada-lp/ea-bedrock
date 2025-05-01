@@ -1,22 +1,28 @@
-name: validate-title
+name: validate-pr
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
+    types: [opened, edited, synchronize, reopened]
 
 jobs:
-  validate-title:
+  validate-title:  # This matches 'validate-title'
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Validate PR title contains 'Feature'
+      - name: Check PR title includes "feature"
         run: |
-          echo "Checking PR title: ${{ github.event.pull_request.title }}"
-          if [[ ! "${{ github.event.pull_request.title }}" =~ [Ff]eature ]]; then
-            echo "::error title=Invalid PR Title::PR title must contain the word 'Feature'"
+          TITLE="${{ github.event.pull_request.title }}"
+          echo "Title: $TITLE"
+          if [[ "$TITLE" =~ [Ff]eature ]]; then
+            echo "✅ Title is valid"
+          else
+            echo "❌ Title must include the word 'feature'"
             exit 1
           fi
- 
+
+  validate-pr:  # This matches 'validate-pr'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Placeholder for additional PR validation
+        run: |
+          echo "This is a placeholder for validate-pr."
+          # Add actual validation logic here
