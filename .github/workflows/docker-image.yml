@@ -1,0 +1,25 @@
+# name: validate-pr
+
+# on:
+#   pull_request:
+#     branches:
+#       - BRInt
+#       - BRStaging
+#       - main
+#     types:
+#       - opened
+
+# jobs:
+#   validate-title:  # Th is matches 'validate-title'
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Check PR title includes "feature"
+#         run: |
+#           TITLE="${{ github.event.pull_request.title }}"
+#           echo "Title: $TITLE"
+#           if [[ "$TITLE" =~ [Dd]ev[Oo]ps[[:space:]]+[Cc]enter ]]; then
+#             echo "✅ Title is valid"
+#           else
+#             echo "❌ Title must include the word 'feature'"
+#             exit 1
+#           fi
