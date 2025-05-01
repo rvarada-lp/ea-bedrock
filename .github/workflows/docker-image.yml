@@ -12,17 +12,9 @@ jobs:
         run: |
           TITLE="${{ github.event.pull_request.title }}"
           echo "Title: $TITLE"
-          if [[ "$TITLE" =~ [Ff]eature ]]; then
+          if [[ "$TITLE" =~ DevOps Center ]]; then
             echo "✅ Title is valid"
           else
             echo "❌ Title must include the word 'feature'"
             exit 1
           fi
-
-  validate-pr:  # This matches 'validate-pr'
-    runs-on: ubuntu-latest
-    steps:
-      - name: Placeholder for additional PR validation
-        run: |
-          echo "This is a placeholder for validate-pr."
-          # Add actual validation logic here
