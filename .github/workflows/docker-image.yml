@@ -2,21 +2,18 @@ name: validate-title
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
+    types: [opened, edited, synchronize, reopened]
 
 jobs:
-  validate-title:
+  check-title:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Validate PR title contains 'Feature'
+      - name: Check PR title contains "feature"
         run: |
-          echo "Checking PR title: ${{ github.event.pull_request.title }}"
-          if [[ ! "${{ github.event.pull_request.title }}" =~ [Ff]eature ]]; then
-            echo "::error title=Invalid PR Title::PR title must contain the word 'Feature'"
+          echo "Pull Request Title: ${{ github.event.pull_request.title }}"
+          if [[ "${{ github.event.pull_request.title }}" =~ [Ff]eature ]]; then
+            echo "✅ Title contains 'feature'."
+          else
+            echo "❌ Title must contain the word 'feature'."
             exit 1
           fi
- 
