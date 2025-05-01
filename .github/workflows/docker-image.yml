@@ -10,7 +10,7 @@ on:
       - opened
 
 jobs:
-  validate-title:  # This matches 'validate-title'
+  validate-title:  # Th is matches 'validate-title'
     runs-on: ubuntu-latest
     steps:
       - name: Check PR title includes "feature"
